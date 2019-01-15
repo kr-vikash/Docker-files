@@ -2,10 +2,12 @@
 #Build the image
 #docker build -t libre-office
 #Use below command to run the libreoffice
-#docker run --rm --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" libre-office
+#docker run --rm --net=host --env="DISPLAY" -v $HOME/.Xauthority:/root/.Xauthority:rw -v $HOME/libreOfficeSavedFile:/home libre-office
+#
+#save your all work to home folder in container to get copy to local directory libreOfficeSavedFile 
 #
 #
-
+#
 
 FROM ubuntu:14.04
 
