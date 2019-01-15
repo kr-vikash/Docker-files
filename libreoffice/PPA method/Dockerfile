@@ -2,7 +2,7 @@
 #Build the image
 #docker build -t libre-office
 #Use below command to run the libreoffice
-#docker run --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" libre-office
+#docker run --rm --net=host --env="DISPLAY" --volume="$HOME/.Xauthority:/root/.Xauthority:rw" libre-office
 #
 #
 
