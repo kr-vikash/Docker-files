@@ -7,22 +7,25 @@
 #
 
 
+
 FROM ubuntu:14.04
 
-Run apt-get update \
-    && apt-get -y install software-properties-common \
-    && add-apt-repository ppa:libreoffice/ppa \
-    && apt-get update \
-    && apt-get -y install libreoffice 
+RUN apt-get update \
+    && apt-get -y install curl \
+    && curl -O https://mirrors.estointernet.in/tdf/libreoffice/stable/6.1.4/deb/x86_64/LibreOffice_6.1.4_Linux_x86-64_deb.tar.gz \
+    && apt-get update 
+    
+RUN apt-get -y remove curl
 
-Run apt-get -y remove software-properties-common
-#removed apt list
+RUN tar -xzf LibreOffice_6.1.4_Linux_x86-64_deb.tar.gz && rm LibreOffice_6.1.4_Linux_x86-64_deb.tar.gz
+
+RUN apt-get -y install libglu1-mesa \
+    && apt-get -y install libxinerama1 
+
+
+RUN cd /LibreOffice_6.1.4.2_Linux_x86-64_deb/DEBS && dpkg -i *.deb 
+
+RUN rm -r tmp
 RUN rm -rf /var/lib/apt/lists/*
 
-CMD ["/usr/bin/libreoffice"]
-
-
-
-
-
-
+CMD ["/usr/bin/libreoffice6.1"]
